@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barber Style - Reservas</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Barber Style</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="reservas.html" class="activo">Reservas</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="formulario-reserva">
+        <h2 class="titulo-seccion">RESERVAS</h2>
+        <p class="descripcion">Para agendar una cita, complete el formulario a continuación.</p>
+
+        <form class="formulario">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="correo">Correo Electrónico</label>
+            <input type="email" id="correo" name="correo" required>
+
+            <label for="celular">Celular</label>
+            <input type="tel" id="celular" name="celular" required>
+
+            <label for="servicio">Servicio</label>
+            <select id="servicio" name="servicio" required>
+                <option value="corte-degradado">Corte degradado</option>
+                <option value="corte-clasico">Corte clásico</option>
+                <option value="barba">Barba y perfilado</option>
+                <option value="tratamiento">Tratamiento capilar</option>
+            </select>
+
+            <label for="fecha">Fecha</label>
+            <input type="date" id="fecha" name="fecha" required>
+
+            <button type="submit" class="btn-principal">RESERVAR</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Barber Style. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
