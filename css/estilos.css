@@ -54,7 +54,7 @@ nav ul li a:hover {
    SECCIÓN HERO (PORTADA HOME)
 ============================= */
 .hero {
-    background-image: url('Imagenes_Home/Barbero cortando.png');
+    background-image: url('../Imagenes_Home/barbero.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -396,10 +396,9 @@ footer {
 }
 
 
-/* ---------------------- */
-/* SERVICIOS - SECCIÓN    */
-/* ---------------------- */
-
+/* ----------------------
+   SERVICIOS - SECCIÓN    
+---------------------- */
 .servicios-seccion {
     padding: 60px 40px;
     text-align: center;
@@ -449,4 +448,26 @@ footer {
 .servicio p {
     font-size: 15px;
     color: #555;
+}
+
+
+/* =============================
+   MEDIA QUERIES (RESPONSIVE)
+============================= */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero {
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .testimonio-card {
+        flex-direction: column;
+        text-align: center;
+    }
 }
