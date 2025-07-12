@@ -1,56 +1,173 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barber Style - Reservas</title>
-    <link rel="stylesheet" href="css/estilos.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Barber Style - Reservas</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    .mensaje-confirmacion {
+      color: green;
+      font-weight: bold;
+      margin-top: 20px;
+      display: none;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .horas-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .hora {
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      border: none;
+      background-color: #e0e0e0;
+      transition: all 0.3s ease;
+    }
+
+    .hora:hover {
+      background-color: #d0d0d0;
+    }
+
+    .ocupada {
+      background-color: #d9534f;
+      color: white;
+      cursor: not-allowed;
+    }
+
+    .seleccionada {
+      background-color: #5cb85c;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">Barber Style</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="nosotros.html">Sobre Nosotros</a></li>
-                <li><a href="servicios.html">Servicios</a></li>
-                <li><a href="reservas.html" class="activo">Reservas</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section class="formulario-reserva">
-        <h2 class="titulo-seccion">RESERVAS</h2>
-        <p class="descripcion">Para agendar una cita, complete el formulario a continuación.</p>
+  <header>
+    <div class="logo">Barber Style</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Sobre Nosotros</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="reservas.html" class="activo">Reservas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
 
-        <form class="formulario">
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre" required>
+  <section class="formulario-reserva">
+    <h2 class="titulo-seccion">RESERVAS</h2>
+    <p class="descripcion">Para agendar una cita, complete el formulario y seleccione una hora disponible.</p>
 
-            <label for="correo">Correo Electrónico</label>
-            <input type="email" id="correo" name="correo" required>
+    <form id="formReserva" class="formulario">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre" required />
 
-            <label for="celular">Celular</label>
-            <input type="tel" id="celular" name="celular" required>
+      <label for="correo">Correo Electrónico</label>
+      <input type="email" id="correo" name="correo" required />
 
-            <label for="servicio">Servicio</label>
-            <select id="servicio" name="servicio" required>
-                <option value="corte-degradado">Corte degradado</option>
-                <option value="corte-clasico">Corte clásico</option>
-                <option value="barba">Barba y perfilado</option>
-                <option value="tratamiento">Tratamiento capilar</option>
-            </select>
+      <label for="celular">Celular</label>
+      <input type="tel" id="celular" name="celular" required />
 
-            <label for="fecha">Fecha</label>
-            <input type="date" id="fecha" name="fecha" required>
+      <label for="barbero">Barbero favorito</label>
+      <select id="barbero" name="barbero" required>
+        <option value="">Seleccione un barbero</option>
+        <option value="david">David</option>
+        <option value="carlos">Carlos</option>
+        <option value="jenny">Jenny</option>
+      </select>
 
-            <button type="submit" class="btn-principal">RESERVAR</button>
-        </form>
-    </section>
+      <label for="fecha">Fecha</label>
+      <input type="date" id="fecha" name="fecha" required />
 
-    <footer>
-        <p>&copy; 2025 Barber Style. Todos los derechos reservados.</p>
-    </footer>
+      <label>Horas disponibles</label>
+      <div class="horas-container" id="horas"></div>
+
+      <!-- Input oculto para guardar la hora seleccionada -->
+      <input type="hidden" id="hora" name="hora" required />
+
+      <label for="servicio">Servicio</label>
+      <select id="servicio" name="servicio" required>
+        <option value="corte-degradado">Corte degradado</option>
+        <option value="corte-clasico">Corte clásico</option>
+        <option value="barba">Barba y perfilado</option>
+        <option value="tratamiento">Tratamiento capilar</option>
+      </select>
+
+      <button type="submit" class="btn-principal">RESERVAR</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Barber Style. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    const reservas = {
+      "2025-07-14": {
+        "david": ["09:00", "10:00", "14:00"],
+        "carlos": ["11:00", "12:00"],
+        "jenny": []
+      }
+    };
+
+    const horasContenedor = document.getElementById("horas");
+    const selectFecha = document.getElementById("fecha");
+    const selectBarbero = document.getElementById("barbero");
+    const inputHora = document.getElementById("hora");
+    const form = document.getElementById("formReserva");
+
+    function generarHoras() {
+      horasContenedor.innerHTML = "";
+      inputHora.value = "";
+      const dia = selectFecha.value;
+      const barbero = selectBarbero.value;
+      const ocupadas = reservas[dia]?.[barbero] || [];
+
+      for (let h = 9; h <= 17; h++) {
+        const horaTexto = h.toString().padStart(2, "0") + ":00";
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = horaTexto;
+        btn.className = "hora";
+        if (ocupadas.includes(horaTexto)) {
+          btn.classList.add("ocupada");
+          btn.disabled = true;
+        } else {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll(".hora").forEach(b => b.classList.remove("seleccionada"));
+            btn.classList.add("seleccionada");
+            inputHora.value = horaTexto;
+          });
+        }
+        horasContenedor.appendChild(btn);
+      }
+    }
+
+    selectFecha.addEventListener("change", generarHoras);
+    selectBarbero.addEventListener("change", generarHoras);
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!inputHora.value) {
+        alert("Por favor, selecciona una hora disponible.");
+        return;
+      }
+      alert("✅ ¡Tu cita fue registrada con éxito!");
+      form.reset();
+      horasContenedor.innerHTML = "";
+    });
+  </script>
+
 </body>
 </html>
