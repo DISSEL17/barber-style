@@ -96,21 +96,35 @@
       <!-- Input oculto para guardar la hora seleccionada -->
       <input type="hidden" id="hora" name="hora" required />
 
-      <label for="servicio">Servicio</label>
-      <select id="servicio" name="servicio" required>
-        <option value="corte-degradado">Corte degradado</option>
-        <option value="corte-clasico">Corte clásico</option>
-        <option value="barba">Barba y perfilado</option>
-        <option value="tratamiento">Tratamiento capilar</option>
-      </select>
+  <label for="servicio">Servicio</label>
+  <select id="servicio" name="servicio" required>
+    <option value="Corte Clásico">Corte Clásico - S/ 25.00</option>
+    <option value="Low Fade">Low Fade - S/ 28.00</option>
+    <option value="Low Fade + Diseño">Low Fade + Diseño - S/ 32.00</option>
+    <option value="Mascarilla Facial">Mascarilla Facial - S/ 20.00</option>
+    <option value="Mid Fade">Mid Fade - S/ 28.00</option>
+    <option value="Mid Fade en V">Mid Fade en V - S/ 30.00</option>
+    <option value="Mid Fade V 2.0">Mid Fade V 2.0 - S/ 31.00</option>
+    <option value="Mid Fade + Línea">Mid Fade + Línea - S/ 32.00</option>
+    <option value="Mohicano">Mohicano - S/ 34.00</option>
+    <option value="Mullet">Mullet - S/ 35.00</option>
+    <option value="Taper Fade">Taper Fade - S/ 27.00</option>
+    <option value="Taper Fade 2.0">Taper Fade 2.0 - S/ 28.00</option>
+  </select>
+
 
       <button type="submit" class="btn-principal">RESERVAR</button>
     </form>
   </section>
 
-  <footer>
+    <footer>
     <p>&copy; 2025 Barber Style. Todos los derechos reservados.</p>
-  </footer>
+    <p style="margin-top: 10px;">Página desarrollada por Jonathan Castañeda Gutierrez</p>
+    <div class="redes-sociales">
+        <a href="https://www.instagram.com/blessed_21barbershop/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/51923414679" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    </footer>
 
   <script>
     const reservas = {
@@ -168,6 +182,7 @@
       horasContenedor.innerHTML = "";
     });
   </script>
+
 
 </body>
 </html>

@@ -521,3 +521,79 @@ footer {
     border-radius: 6px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
+
+/* =============================
+   NOSOTROS - VIDEO
+============================= */
+.bloque-contenido {
+    display: flex;
+    gap: 50px;
+    padding: 30px 40px;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.info-nosotros {
+    flex: 1;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.video-nosotros {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-nosotros video {
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    max-width: 100%;
+    height: auto;
+}
+
+/* =============================
+   EQUIPO  - VIDEO
+============================= */
+
+.equipo {
+  text-align: center;
+  padding: 60px 40px;
+}
+
+.miembro-equipo {
+  display: inline-block;
+  margin-top: 30px;
+}
+
+.miembro-equipo img {
+  width: 140px;
+  border-radius: 100px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* =============================
+   REDES SOCIALES
+============================= */
+
+.redes-sociales {
+  margin-top: 15px;
+}
+
+.redes-sociales a {
+  margin: 0 10px;
+  color: white;
+  font-size: 22px;
+  transition: color 0.3s;
+}
+
+.redes-sociales a:hover {
+  color: red;
+}
